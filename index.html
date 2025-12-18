@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Serat Ulem Digital</title>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#b89550;
+  --white:#ffffff;
+  --dark:#000000;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  width:100%;
+  height:100%;
+  background:var(--dark);
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+  touch-action:none;
+}
+
+.section-slide{
+  width:100vw;
+  height:100svh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.frame-916{
+  position:relative;
+  height:100svh;
+  aspect-ratio:9/16;
+  background:#000;
+  overflow:hidden;
+}
+
+.bg-image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  z-index:1;
+}
+
+.content-overlay{
+  position:relative;
+  z-index:5;
+  width:100%;
+  height:100%;
+  padding:40px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.nama-mempelai{
+  font-family:'Great Vibes',cursive;
+  font-size:2.8rem;
+  color:var(--gold);
+  margin:10px 0;
+}
+
+.btn-buka{
+  background:var(--gold);
+  color:#fff;
+  padding:12px 35px;
+  border-radius:50px;
+  font-size:.8rem;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+  margin:20px 0;
+  text-transform: uppercase;
+}
+
+.foto-bulat{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:3px solid #fff;
+  object-fit:cover;
+}
+
+/* ===== COUNTDOWN STYLE ===== */
+#timer-wrapper { display: flex; gap: 8px; margin: 20px 0; }
+.timer-item { 
+    background: rgba(184, 149, 80, 0.8); 
+    color: white; 
+    padding: 8px; 
+    border-radius: 10px; 
+    min-width: 65px; 
+}
+.timer-item span { display: block; font-size: 1.1rem; font-weight: bold; }
+.timer-item small { font-size: 0.55rem; letter-spacing: 1px; }
+#event-started { display: none; font-family: 'Cinzel'; color: var(--gold); font-weight: bold; font-size: 1.1rem; }
+
+/* ===== INFO ACARA ===== */
+.info-card {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--gold);
+    border-radius: 15px;
+    padding: 15px;
+    width: 100%;
+    margin: 8px 0;
+    color: white;
+}
+.info-card h5 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 5px; letter-spacing: 2px; }
+.info-card p { font-size: 0.75rem; line-height: 1.5; }
+
+/* KELURUSAN KHUSUS AKAD HITAM */
+.akad-hitam {
+    background: rgba(255, 255, 255, 0.8) !important; /* Latar Putih Transparan */
+    border: 1px solid #000 !important;
+}
+.akad-hitam h5, .akad-hitam p {
+    color: #000 !important; /* Teks Hitam */
+}
+
+.galeri-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  width:100%;
+}
+.galeri-grid img{
+  width:100%;
+  height:95px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px solid #fff;
+}
+
+.map-box{
+  width:100%;
+  height:180px;
+  border-radius:15px;
+  overflow:hidden;
+  margin:15px 0;
+  border:2px solid #fff;
+}
+
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--gold);
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:1000;
+  color:#fff;
+  display:none;
+}
+</style>
+</head>
+
+<body class="locked">
+
+<audio id="mySong" loop>
+  <source src="music.mp3">
+</audio>
+<div class="music-btn" id="musBtn" onclick="toggleMusic()">🎵</div>
+
+<section class="section-slide" id="slide-1">
+  <div class="frame-916">
+    <img src="bg1.jpg" class="bg-image">
+    <div class="content-overlay" data-aos="fade-up">
+      <p style="font-family:Cinzel;font-size:.7rem;letter-spacing:4px;color:var(--gold)">
+        SERAT ULEM PAWIWAHAN
+      </p>
+      <h1 class="nama-mempelai"></style>Rama & Shinta</h1>
+      <button class="btn-buka" onclick="startInvitation()">MBIKAK ULEM</button>
+      <img src="foto1.jpg" class="foto-bulat">
+    </div>
+  </div>
+</section>
+
+<div id="main-content" style="display:none">
+
+<section class="section-slide" id="slide-2">
+  <div class="frame-916">
+    <img src="bg1.jpg" class="bg-image">
+    <div class="content-overlay" data-aos="fade-up">
+      <h3 style="font-family:Cinzel;font-size:.8rem;color:var(--gold);margin-bottom:15px">MEMPELAI</h3>
+      <img src="foto2.jpg" class="foto-bulat" style="width:85px;height:85px">
+      <h4 style="color:rgb(13, 2, 2)">Raden Rama</h4>
+      <h2 class="nama-mempelai" style="font-size:1.8rem">&</h2>
+      <img src="foto3.jpg" class="foto-bulat" style="width:85px;height:85px">
+      <h4 style="color:rgb(7, 4, 4)">Dewi Shinta</h4>
+    </div>
+  </div>
+</section>
+
+<section class="section-slide">
+  <div class="frame-916">
+    <img src="bg1.jpg" class="bg-image">
+    <div class="content-overlay" data-aos="fade-up">
+      <h3 style="font-family:Cinzel;color:var(--gold);margin-bottom:10px">WAKDAL ACARA</h3>
+      
+      <div id="timer-wrapper">
+          <div class="timer-item"><span id="days">00</span><small>DINTEN</small></div>
+          <div class="timer-item"><span id="hours">00</span><small>JAM</small></div>
+          <div class="timer-item"><span id="mins">00</span><small>MENIT</small></div>
+          <div class="timer-item"><span id="secs">00</span><small>DETIK</small></div>
+      </div>
+      <div id="event-started">DINTEN BAHAGIA SAMPUN TIBA!</div>
+
+      <div class="info-card akad-hitam">
+          <h5>IJAB QOBUL</h5>
+          <p>Dec 31, 2025</p>
+          <p>Tabuh 08.00 - 10.00 WIB<br>Mapan wonten ing Dalemipun Mempelai Putri</p>
+      </div>
+      <div class="info-card">
+          <h5>RESEPSI</h5>
+          <p>Tabuh 11.00 - Sakpurnanipun<br>Gedung Serbaguna ABC, Kota XYZ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-slide">
+  <div class="frame-916">
+    <img src="bg2.jpg" class="bg-image">
+    <div class="content-overlay" data-aos="fade-up">
+      <h3 style="font-family:Cinzel;color:var(--gold);margin-bottom:15px">GALERI FOTO</h3>
+      <div class="galeri-grid">
+        <img src="foto1.jpg"><img src="foto4.jpg">
+        <img src="foto2.jpg"><img src="foto3.jpg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-slide">
+  <div class="frame-916">
+    <img src="bg1.jpg" class="bg-image">
+    <div class="content-overlay" data-aos="zoom-in">
+      <h3 style="font-family:Cinzel;color:var(--gold)">PAPAN LOKASI</h3>
+      <div class="map-box">
+        <iframe src="maps.jpg" width="100%" height="100%" style="border:0" loading="lazy"></iframe>
+      </div>
+      <button class="btn-buka" style="font-size:.7rem">PITEDAH MARGI</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+const song=document.getElementById("mySong");
+
+// ===== SET TANGGAL ACARA =====
+const targetDate = new Date("Dec 31, 2025 08:00:00").getTime();
+
+const countdown = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("timer-wrapper").style.display = "none";
+        document.getElementById("event-started").style.display = "block";
+    } else {
+        document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    }
+}, 1000);
+
+function startInvitation(){
+  song.play();
+  document.getElementById("main-content").style.display="block";
+  document.getElementById("musBtn").style.display="flex";
+  document.body.classList.remove("locked");
+  setTimeout(()=>{
+    document.getElementById("slide-2").scrollIntoView({behavior:"smooth"});
+  },150);
+}
+
+function toggleMusic(){
+  song.paused ? song.play() : song.pause();
+}
+</script>
+
+</body>
+</html>
